@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Put our routes here:
-
+app.get('/', indexController.index)
 
 
 
@@ -64,7 +64,7 @@ request('https://en.wikipedia.org/wiki/List_of_Colorado_ski_resorts#List_of_ski_
 		};
 		// Asynchronous mapping to get the wiki page for each ski area:
 		async.map(skiAreas, getSkiPage, function(err,results){
-				for (var i = 1; i < skiAreas.length; i++) {
+				for (var i = 0; i < skiAreas.length; i++) {
 					skiAreas[i] = skiScraper(skiAreas[i],results[i]);
 				};
 				console.log(skiAreas)

@@ -1,4 +1,8 @@
 extends layout
 
 block content
-	h1 Hello Boulder!
+	script.
+		var skiAreaList = !{JSON.stringify(skiAreaList)}
+	script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+	script(src='http://d3js.org/d3.v3.min.js', charset='utf-8')
+	script(src='/main.js')
