@@ -1,4 +1,10 @@
 body {
 	background: #ccc;
 	margin: 0;
+	overflow: hidden;
+	overflow-x: scroll;
+}
+
+svg {
+	margin-bottom: -10px;
 }
