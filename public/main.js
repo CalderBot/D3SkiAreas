@@ -49,20 +49,25 @@ var data = skiAreaList.filter(isComplete)
 var sortedSnowfall = data.sort(function(a,b) {
 	return a.yearlySnowfall - b.yearlySnowfall;
 })
-var lowestsnow = sortedSnowfall[0].yearlySnowfall;
+var lowestSnow = sortedSnowfall[0].yearlySnowfall;
+
+var SNOWCONSTANT = 0.1;
 
 var makeSnowFall = (function() {
 	for (var i=0; i<data.length; i++) {
-		console.log(Math.floor(((data[i].yearlySnowfall - lowestsnow + 3))/100) || 3)
-		data[i].snowfall = new Array(Math.floor(((data[i].yearlySnowfall - lowestsnow + 3))/10) || 3)
+		data[i].snowfall = new Array(
+			Math.floor(
+				(data[i].yearlySnowfall - lowestSnow) * (data[i].skiableAcres / (data[i].top - data[i].base)) * SNOWCONSTANT + 1
+			)
+		)
 	}
 })();
 
 
-// console.log(lowestsnow)
+// console.log(lowestSnow)
 
 var SVG_HEIGHT = 1000
-var SNOWFALLSCALE = 20
+var SVG_WIDTH = 4000
 var AWESOMESCALE = 500
 var XSCALE = 200
 var YHEIGHT = SVG_HEIGHT
@@ -71,26 +76,21 @@ var HEIGHTSCALE = .2
 
 
 
-// New makeAwesomeness
-var AWE1 = 20
-var AWE2 = 20
-var AWE3 = 40
-var AWE4 = 20
-
-
-
-
-
-
-
-
-
+var SNOWFALLSCALE = 10
+var EXPERTSCALE = 40
+var ADVANCEDSCALE = EXPERTSCALE
+var ACRESSCALE = 0.8
+var VERTSCALE = 1
 
 
 
 //FUNCTION TO DETERMINE HOW AWESOME EACH MOUNTAIN IS
 function makeAwesomeness(obj){
-  var n = obj.skiableAcres + SNOWFALLSCALE * obj.yearlySnowfall
+  var n = ACRESSCALE * obj.skiableAcres
+  	+ SNOWFALLSCALE * obj.yearlySnowfall 
+  	+ EXPERTSCALE * obj.expert 
+  	+ ADVANCEDSCALE * obj.advanced
+  	+ VERTSCALE * (obj.top - obj.base)
   return n / AWESOMESCALE;
 }
 //LOOP THROUGH AND STORE THE AWESOMENESS TO LATER SORT BY THIS VARIABLE
@@ -122,7 +122,7 @@ for(i=0;i<data.length;i++){
 
 var svg = d3.select('body')
 	.append('svg')
-	.attr('width', 5500)
+	.attr('width', SVG_WIDTH)
 	.attr('height', SVG_HEIGHT)
 
 var mtns = svg.selectAll('polygon')
