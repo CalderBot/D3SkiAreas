@@ -20,6 +20,7 @@ label {
 	right: 20px;
 }
 
+/* cross browser CSS gradient */
 .key {
 	background: -moz-linear-gradient(top, rgba(0,66,189,0.7) 0%, rgba(0,204,51,0.7) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,66,189,0.7)), color-stop(100%,rgba(0,204,51,0.7)));
@@ -56,7 +57,7 @@ label {
 	right: 200px;
 }
 
+/* avoid scrolling bug by setting -10px margin-bottom */
 svg {
 	margin-bottom: -10px;
-	max-height: 100%;
 }

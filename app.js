@@ -68,7 +68,7 @@ request('https://en.wikipedia.org/wiki/List_of_Colorado_ski_resorts#List_of_ski_
 					skiAreas[i] = skiScraper(skiAreas[i],results[i]);
 				};
 				console.log(skiAreas)
-				// Asyncronous mapping to save ski areas to database
+				// Asynchronous mapping to save ski areas to database
 				async.map(skiAreas, storeSkiArea,
 					function(err,results){
 						if(err) return console.log("Error storing ski areas to database");
