@@ -179,7 +179,22 @@ $(function() {
 					.attr('class', 'snow')
 					.attr('fill', 'white')
 					.attr('r', function(d) {
-						return Math.round(Math.random()*3+3)
+						var x = Math.random()
+						if (x > 0.02) {
+							return Math.round(Math.random()*3+3)
+						}
+						else if (x > .005 ) {
+							return 15
+						}
+						else if (x > .0005) {
+							return 20
+						}
+						else if (x > .0001) {
+							return 40
+						}
+						else {
+							return 600
+						}
 					})
 					.attr('cx', function() {
 						var width = (XSCALE * data[j].skiableAcres)/((data[j].top-data[j].base))
@@ -190,7 +205,7 @@ $(function() {
 						// radius is radius of snowflake to protect from left-side clipping
 						return (XSCALE * j + randomWidth)
 					})
-					.attr('cy', '-20')
+					.attr('cy', '-600')
 					.transition()
 					.ease('linear')
 					.duration(interval)
@@ -210,5 +225,10 @@ $(function() {
 
 		}
 	}, interval/2)
+
+	var DOCWIDTH = parseInt($(document).width());
+	$('.key.sink').width(DOCWIDTH - 400)
+	$('.sink.right').css('left', DOCWIDTH - 180 + 'px')
+	console.log(DOCWIDTH)
 
 });

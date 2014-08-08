@@ -1,6 +1,12 @@
 extends layout
 
 block content
+	.key
+	label easy
+	label.right expert
+	.key.sink
+	label.sink most awesome
+	label.sink.right least awesome
 	script.
 		var skiAreaList = !{JSON.stringify(skiAreaList)}
 	script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
