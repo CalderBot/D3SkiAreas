@@ -42,9 +42,11 @@ label {
 	font-weight: 200;
 	position: absolute;
 }
+
 .sink.right {
 	width: 200px;
 }
+
 .sink.key {
 	background: #fff;
 	bottom: 37px;
