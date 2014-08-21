@@ -8,7 +8,7 @@ var cheerio = require('cheerio');
 var request = require("request");
 var async = require('async');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ColoradoSkiAreas');
+mongoose.connect('mongodb://heroku:AH-Gfwy6aBKyYyJSNDZ-grNyJNyfMXP_-YsANfdlW4azAhOElzubfG83p_bqfA2FTPjczYjuvVWpyJ5rvYJeFQ@kahana.mongohq.com:10068/app28723027');
 
 // Express setup:
 var app = express();
@@ -22,7 +22,7 @@ app.get('/', indexController.index)
 
 
 
-var server = app.listen(4068, function() {
+var server = app.listen(process.env.PORT || 4068, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
 
