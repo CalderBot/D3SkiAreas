@@ -61,3 +61,9 @@ label {
 svg {
 	margin-bottom: -10px;
 }
+
+.info {
+	background: red;
+	position: absolute;
+	width: 200px;
+}

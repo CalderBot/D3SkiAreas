@@ -148,6 +148,23 @@ $(function() {
 
 
 
+	// ------------------------ DISPLAY SKI AREA INFO (on hover) ------------------------
+	var infoBox = d3.select('body')
+		.selectAll('.info')
+		.data(data)
+		.enter()
+		.append('p')
+		.attr('class', 'info')
+		.attr('style', function(d, i) {
+			console.log(XSCALE, i)
+			return 'left: ' + (XSCALE * i + XSCALE/2) + 'px; top: ' + d.points[2].y + 'px;'
+		})
+		.html(function(d) {
+			console.log(d)
+			return 'Yearly snowfall: ' + d.yearlySnowfall + ' inches<br>Skiable acres: ' + d.skiableAcres 
+		})
+
+
 	// ------------------------ MAKE SNOW FALL! ------------------------
 	var interval = 4000;
 
