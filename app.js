@@ -1,5 +1,6 @@
 // Locals
 var indexController = require('./controllers/index.js');
+var landingController = require('./controllers/landing.js');
 var SkiArea = require('./models/skiArea.js');
 // Modules
 var express = require('express');
@@ -18,7 +19,8 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Put our routes here:
-app.get('/', indexController.index)
+app.get('/', landingController.landing)
+app.get('/app', indexController.index)
 
 
 
