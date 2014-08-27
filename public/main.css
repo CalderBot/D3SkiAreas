@@ -13,6 +13,7 @@ body {
 /* ------------------------ LANDING PAGE ------------------------ */
 
 h1 {
+	display: none;
 	font-weight: 200;
 	letter-spacing: 4px;
 	margin: 200px auto;
